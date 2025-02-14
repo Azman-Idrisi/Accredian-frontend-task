@@ -184,7 +184,7 @@ const Hero = () => {
                 {[...Array(4)].map((_, i) => (
                   <img
                     key={i}
-                    src={`/src/assets/images/users/${i + 1}.png`}
+                    src={`assets/images/users/${i + 1}.png`}
                     alt={`User ${i + 1}`}
                     className="w-8 h-8 rounded-full border-2 border-black object-cover"
                   />
@@ -202,7 +202,7 @@ const Hero = () => {
               <div className="w-[320px] h-[640px] mx-auto rounded-[3rem] p-4 bg-gray-900 shadow-2xl">
                 <div className="w-full h-full rounded-[2.5rem] overflow-hidden bg-gray-800">
                   <img
-                    src="/src/assets/images/webpic.png"
+                    src="/assets/images/webpic.png"
                     alt="App interface"
                     className="w-full h-full object-cover"
                   />
