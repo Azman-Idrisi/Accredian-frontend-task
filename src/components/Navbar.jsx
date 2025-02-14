@@ -43,7 +43,7 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center gap-5">
             <img
-              src="/src/assets/images/Logo.png"
+              src="assets/images/Logo.png"
               alt="Logo"
               className="h-8 w-auto"
             />
