@@ -1,8 +1,56 @@
 import React, { useState } from "react";
 import { ArrowRightCircle, DollarSign, X } from "lucide-react";
+import axios from "axios";
 
 const ReferralModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
+
+  const [formData, setFormData] = useState({
+    referrerName: "",
+    referrerEmail: "",
+    referrerPhone: "",
+    referrerCompany: "",
+    refereeName: "",
+    refereeEmail: "",
+    refereePhone: "",
+    course: "",
+    additionalNotes: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const submit = async (e) => {
+    e.preventDefault();
+
+    const { referrerName, referrerEmail, refereeName, refereeEmail, course } = formData;
+
+    if (!referrerName || !referrerEmail || !refereeName || !refereeEmail || !course) {
+      alert("Please fill out all required fields.");
+      return;
+    }
+
+    try {
+      const response = await axios.get(
+        `https://accredian-backend-task-kohl.vercel.app/referral?referrerName=${encodeURIComponent(
+          referrerName
+        )}&referrerEmail=${encodeURIComponent(
+          referrerEmail
+        )}&refereeName=${encodeURIComponent(refereeName)}&refereeEmail=${encodeURIComponent(
+          refereeEmail
+        )}&course=${encodeURIComponent(course)}`
+      );
+      console.log(response.status);
+      
+      if (response.status === 201) {
+        onClose();
+      }
+    } catch (error) {
+      console.error("There was an error submitting the referral", error);
+      alert("Something went wrong. Please try again.");
+    }
+  };
 
   return (
     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
@@ -13,48 +61,57 @@ const ReferralModal = ({ isOpen, onClose }) => {
             <h3 className="text-xl font-semibold text-white">Refer a Friend</h3>
             <p className="text-slate-400 text-sm mt-1">Earn up to ₹15,000 per successful referral</p>
           </div>
-          <button 
-            onClick={onClose}
-            className="p-2 hover:bg-slate-800 rounded-lg transition-colors"
-          >
+          <button onClick={onClose} className="p-2 hover:bg-slate-800 rounded-lg transition-colors">
             <X className="w-5 h-5 text-slate-400" />
           </button>
         </div>
 
         {/* Form */}
-        <form className="p-6 space-y-6">
+        <form onSubmit={submit} className="p-6 space-y-6">
           {/* Referrer Details */}
           <div className="space-y-4">
             <h4 className="text-sm font-medium text-slate-300">Your Details (Referrer)</h4>
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm text-slate-400 mb-2">Your Name*</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
+                  name="referrerName"
+                  value={formData.referrerName}
+                  onChange={handleChange}
                   className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-colors"
                   required
                 />
               </div>
               <div>
                 <label className="block text-sm text-slate-400 mb-2">Your Email*</label>
-                <input 
-                  type="email" 
+                <input
+                  type="email"
+                  name="referrerEmail"
+                  value={formData.referrerEmail}
+                  onChange={handleChange}
                   className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-colors"
                   required
                 />
               </div>
               <div>
                 <label className="block text-sm text-slate-400 mb-2">Your Phone*</label>
-                <input 
-                  type="tel" 
+                <input
+                  type="tel"
+                  name="referrerPhone"
+                  value={formData.referrerPhone}
+                  onChange={handleChange}
                   className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-colors"
                   required
                 />
               </div>
               <div>
                 <label className="block text-sm text-slate-400 mb-2">Your University/Company</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
+                  name="referrerCompany"
+                  value={formData.referrerCompany}
+                  onChange={handleChange}
                   className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-colors"
                 />
               </div>
@@ -67,31 +124,43 @@ const ReferralModal = ({ isOpen, onClose }) => {
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm text-slate-400 mb-2">Friend's Name*</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
+                  name="refereeName"
+                  value={formData.refereeName}
+                  onChange={handleChange}
                   className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-colors"
                   required
                 />
               </div>
               <div>
                 <label className="block text-sm text-slate-400 mb-2">Friend's Email*</label>
-                <input 
-                  type="email" 
+                <input
+                  type="email"
+                  name="refereeEmail"
+                  value={formData.refereeEmail}
+                  onChange={handleChange}
                   className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-colors"
                   required
                 />
               </div>
               <div>
                 <label className="block text-sm text-slate-400 mb-2">Friend's Phone*</label>
-                <input 
-                  type="tel" 
+                <input
+                  type="tel"
+                  name="refereePhone"
+                  value={formData.refereePhone}
+                  onChange={handleChange}
                   className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-colors"
                   required
                 />
               </div>
               <div>
                 <label className="block text-sm text-slate-400 mb-2">Course Interested In*</label>
-                <select 
+                <select
+                  name="course"
+                  value={formData.course}
+                  onChange={handleChange}
                   className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-colors"
                   required
                 >
@@ -108,7 +177,10 @@ const ReferralModal = ({ isOpen, onClose }) => {
           {/* Additional Information */}
           <div>
             <label className="block text-sm text-slate-400 mb-2">Additional Notes</label>
-            <textarea 
+            <textarea
+              name="additionalNotes"
+              value={formData.additionalNotes}
+              onChange={handleChange}
               className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-colors"
               rows="3"
               placeholder="Any additional information about your referral..."
@@ -116,7 +188,7 @@ const ReferralModal = ({ isOpen, onClose }) => {
           </div>
 
           {/* Submit Button */}
-          <button 
+          <button
             type="submit"
             className="w-full bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-xl font-medium flex items-center justify-center gap-2 transition-all"
           >
@@ -166,7 +238,7 @@ const Hero = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <button 
+              <button
                 onClick={() => setIsModalOpen(true)}
                 className="group bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-xl font-medium flex items-center justify-center gap-2 transition-all"
               >
@@ -227,7 +299,7 @@ const Hero = () => {
       </div>
 
       {/* Referral Modal */}
-      <ReferralModal 
+      <ReferralModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
       />
