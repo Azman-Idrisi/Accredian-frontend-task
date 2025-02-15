@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { ArrowRightCircle, DollarSign, X } from "lucide-react";
 import axios from "axios";
+import Lottie from "lottie-react";
+import loaderAni from "../loader.json";
 
 const ReferralModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
+
+  const [loader, setLoader] = useState(false);
 
   const [formData, setFormData] = useState({
     referrerName: "",
@@ -22,28 +26,40 @@ const ReferralModal = ({ isOpen, onClose }) => {
   };
 
   const submit = async (e) => {
+    setLoader(true);
+
     e.preventDefault();
 
-    const { referrerName, referrerEmail, refereeName, refereeEmail, course } = formData;
+    const { referrerName, referrerEmail, refereeName, refereeEmail, course } =
+      formData;
 
-    if (!referrerName || !referrerEmail || !refereeName || !refereeEmail || !course) {
+    if (
+      !referrerName ||
+      !referrerEmail ||
+      !refereeName ||
+      !refereeEmail ||
+      !course
+    ) {
       alert("Please fill out all required fields.");
       return;
     }
 
     try {
       const response = await axios.get(
-        `https://accredian-backend-task-kohl.vercel.app/referral?referrerName=${encodeURIComponent(
+        `https://accredian-backend-task-v9co.onrender.com/referral?referrerName=${encodeURIComponent(
           referrerName
         )}&referrerEmail=${encodeURIComponent(
           referrerEmail
-        )}&refereeName=${encodeURIComponent(refereeName)}&refereeEmail=${encodeURIComponent(
+        )}&refereeName=${encodeURIComponent(
+          refereeName
+        )}&refereeEmail=${encodeURIComponent(
           refereeEmail
         )}&course=${encodeURIComponent(course)}`
       );
       console.log(response.status);
-      
+
       if (response.status === 201) {
+        setLoader(false);
         onClose();
       }
     } catch (error) {
@@ -59,9 +75,14 @@ const ReferralModal = ({ isOpen, onClose }) => {
         <div className="p-6 border-b border-slate-800 flex items-center justify-between">
           <div>
             <h3 className="text-xl font-semibold text-white">Refer a Friend</h3>
-            <p className="text-slate-400 text-sm mt-1">Earn up to ₹15,000 per successful referral</p>
+            <p className="text-slate-400 text-sm mt-1">
+              Earn up to ₹15,000 per successful referral
+            </p>
           </div>
-          <button onClick={onClose} className="p-2 hover:bg-slate-800 rounded-lg transition-colors">
+          <button
+            onClick={onClose}
+            className="p-2 hover:bg-slate-800 rounded-lg transition-colors"
+          >
             <X className="w-5 h-5 text-slate-400" />
           </button>
         </div>
@@ -70,10 +91,14 @@ const ReferralModal = ({ isOpen, onClose }) => {
         <form onSubmit={submit} className="p-6 space-y-6">
           {/* Referrer Details */}
           <div className="space-y-4">
-            <h4 className="text-sm font-medium text-slate-300">Your Details (Referrer)</h4>
+            <h4 className="text-sm font-medium text-slate-300">
+              Your Details (Referrer)
+            </h4>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm text-slate-400 mb-2">Your Name*</label>
+                <label className="block text-sm text-slate-400 mb-2">
+                  Your Name*
+                </label>
                 <input
                   type="text"
                   name="referrerName"
@@ -84,7 +109,9 @@ const ReferralModal = ({ isOpen, onClose }) => {
                 />
               </div>
               <div>
-                <label className="block text-sm text-slate-400 mb-2">Your Email*</label>
+                <label className="block text-sm text-slate-400 mb-2">
+                  Your Email*
+                </label>
                 <input
                   type="email"
                   name="referrerEmail"
@@ -95,7 +122,9 @@ const ReferralModal = ({ isOpen, onClose }) => {
                 />
               </div>
               <div>
-                <label className="block text-sm text-slate-400 mb-2">Your Phone*</label>
+                <label className="block text-sm text-slate-400 mb-2">
+                  Your Phone*
+                </label>
                 <input
                   type="tel"
                   name="referrerPhone"
@@ -106,7 +135,9 @@ const ReferralModal = ({ isOpen, onClose }) => {
                 />
               </div>
               <div>
-                <label className="block text-sm text-slate-400 mb-2">Your University/Company</label>
+                <label className="block text-sm text-slate-400 mb-2">
+                  Your University/Company
+                </label>
                 <input
                   type="text"
                   name="referrerCompany"
@@ -120,10 +151,14 @@ const ReferralModal = ({ isOpen, onClose }) => {
 
           {/* Friend's Details */}
           <div className="space-y-4">
-            <h4 className="text-sm font-medium text-slate-300">Friend's Details (Referee)</h4>
+            <h4 className="text-sm font-medium text-slate-300">
+              Friend's Details (Referee)
+            </h4>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm text-slate-400 mb-2">Friend's Name*</label>
+                <label className="block text-sm text-slate-400 mb-2">
+                  Friend's Name*
+                </label>
                 <input
                   type="text"
                   name="refereeName"
@@ -134,7 +169,9 @@ const ReferralModal = ({ isOpen, onClose }) => {
                 />
               </div>
               <div>
-                <label className="block text-sm text-slate-400 mb-2">Friend's Email*</label>
+                <label className="block text-sm text-slate-400 mb-2">
+                  Friend's Email*
+                </label>
                 <input
                   type="email"
                   name="refereeEmail"
@@ -145,7 +182,9 @@ const ReferralModal = ({ isOpen, onClose }) => {
                 />
               </div>
               <div>
-                <label className="block text-sm text-slate-400 mb-2">Friend's Phone*</label>
+                <label className="block text-sm text-slate-400 mb-2">
+                  Friend's Phone*
+                </label>
                 <input
                   type="tel"
                   name="refereePhone"
@@ -156,7 +195,9 @@ const ReferralModal = ({ isOpen, onClose }) => {
                 />
               </div>
               <div>
-                <label className="block text-sm text-slate-400 mb-2">Course Interested In*</label>
+                <label className="block text-sm text-slate-400 mb-2">
+                  Course Interested In*
+                </label>
                 <select
                   name="course"
                   value={formData.course}
@@ -168,7 +209,9 @@ const ReferralModal = ({ isOpen, onClose }) => {
                   <option value="data-science">Data Science & AI</option>
                   <option value="product-management">Product Management</option>
                   <option value="business-analytics">Business Analytics</option>
-                  <option value="digital-transformation">Digital Transformation</option>
+                  <option value="digital-transformation">
+                    Digital Transformation
+                  </option>
                 </select>
               </div>
             </div>
@@ -176,7 +219,9 @@ const ReferralModal = ({ isOpen, onClose }) => {
 
           {/* Additional Information */}
           <div>
-            <label className="block text-sm text-slate-400 mb-2">Additional Notes</label>
+            <label className="block text-sm text-slate-400 mb-2">
+              Additional Notes
+            </label>
             <textarea
               name="additionalNotes"
               value={formData.additionalNotes}
@@ -192,7 +237,15 @@ const ReferralModal = ({ isOpen, onClose }) => {
             type="submit"
             className="w-full bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-xl font-medium flex items-center justify-center gap-2 transition-all"
           >
-            Submit Referral
+            {loader ? (
+              <Lottie
+                style={{ width: 50, height: 50 }}
+                loop={true}
+                animationData={loaderAni}
+              />
+            ) : (
+              "Submit Referral"
+            )}
             <ArrowRightCircle className="w-5 h-5" />
           </button>
         </form>
@@ -216,7 +269,9 @@ const Hero = () => {
           {/* Left Column */}
           <div className="space-y-10">
             <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2">
-              <span className="text-blue-400 text-sm">New: Referral Program</span>
+              <span className="text-blue-400 text-sm">
+                New: Referral Program
+              </span>
               <div className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></div>
             </div>
 
@@ -232,7 +287,9 @@ const Hero = () => {
                 <DollarSign className="w-10 h-10 text-green-400" />
                 <div>
                   <p className="text-gray-400">Earn up to</p>
-                  <p className="text-2xl font-bold text-green-400">Rs. 15,000</p>
+                  <p className="text-2xl font-bold text-green-400">
+                    Rs. 15,000
+                  </p>
                 </div>
               </div>
             </div>
