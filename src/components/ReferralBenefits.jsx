@@ -5,7 +5,7 @@ const ReferralBenefits = () => {
   const [activeTab, setActiveTab] = useState("all");
   const [showMore, setShowMore] = useState(false);
 
-  // Program categories
+  
   const categories = [
     { id: "all", name: "ALL PROGRAMS", icon: null },
     { id: "product", name: "PRODUCT MANAGEMENT", icon: null },
@@ -18,7 +18,7 @@ const ReferralBenefits = () => {
     { id: "analytics", name: "BUSINESS ANALYTICS", icon: null },
   ];
 
-  // Programs data
+ 
   const programs = [
     {
       title: "Professional Certificate Program in Product Management",
@@ -58,16 +58,16 @@ const ReferralBenefits = () => {
     },
   ];
 
-  // Show limited programs based on showMore state
+ 
   const displayedPrograms = showMore ? programs : programs.slice(0, 4);
 
   return (
     <section className="font-inter relative bg-[#020617] py-20">
-      {/* Background grid pattern */}
+     
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+        
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">
             What Are The{" "}
@@ -75,9 +75,9 @@ const ReferralBenefits = () => {
           </h2>
         </div>
 
-        {/* Main Content */}
+        
         <div className="flex flex-col lg:flex-row gap-6">
-          {/* Left Sidebar */}
+         
           <div className="lg:w-1/4">
             <div className="bg-gray-900/60 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-800">
               {categories.map((category) => (
@@ -97,10 +97,10 @@ const ReferralBenefits = () => {
             </div>
           </div>
 
-          {/* Right Content Area */}
+       
           <div className="lg:w-3/4">
             <div className="bg-gray-900/60 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-800">
-              {/* Table Header */}
+              
               <div className="grid grid-cols-3 text-sm font-medium">
                 <div className="bg-blue-500/20 text-blue-400 p-4">Programs</div>
                 <div className="bg-blue-500/10 text-blue-400 p-4 text-center">
@@ -111,7 +111,7 @@ const ReferralBenefits = () => {
                 </div>
               </div>
 
-              {/* Toggle Switch */}
+              
               <div className="flex justify-end p-3 border-b border-gray-800">
                 <div className="flex items-center gap-2">
                   <span className="text-sm text-gray-400">Enrolled</span>
@@ -123,7 +123,7 @@ const ReferralBenefits = () => {
                 </div>
               </div>
 
-              {/* Programs List */}
+            
               {displayedPrograms.map((program, index) => (
                 <div
                   key={index}
@@ -133,7 +133,7 @@ const ReferralBenefits = () => {
                 >
                   <div className="p-4 flex items-center">
                     <School className="w-5 h-5 text-blue-400 mr-3 flex-shrink-0" />{" "}
-                    {/* Use 'School' icon */}
+                    
                     <span className="text-sm text-gray-300">
                       {program.title}
                     </span>
@@ -147,7 +147,6 @@ const ReferralBenefits = () => {
                 </div>
               ))}
 
-              {/* Show More Button */}
               {programs.length > 4 && (
                 <div className="p-4 text-center">
                   <button
@@ -167,7 +166,7 @@ const ReferralBenefits = () => {
           </div>
         </div>
 
-        {/* CTA Button */}
+       
         <div className="mt-10 text-center">
           <button className="inline-flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-xl font-medium transition-all group">
             Refer Now

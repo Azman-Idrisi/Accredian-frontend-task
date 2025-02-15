@@ -13,10 +13,8 @@ import {
 const Footer = () => {
   return (
     <footer className="bg-slate-900 font-inter text-slate-300">
-      {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Programs Column */}
           <div className="space-y-6">
             <h3 className="text-white text-lg font-semibold">Programs</h3>
             <ul className="space-y-4">
@@ -44,7 +42,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact Column */}
           <div className="space-y-6">
             <h3 className="text-white text-lg font-semibold">Contact Us</h3>
             <ul className="space-y-4">
@@ -82,7 +79,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Quick Links */}
           <div className="space-y-6">
             <h3 className="text-white text-lg font-semibold">Quick Links</h3>
             <ul className="space-y-4">
@@ -108,7 +104,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Social & CTA */}
           <div className="space-y-6">
             <div>
               <h3 className="text-white text-lg font-semibold mb-6">
@@ -143,7 +138,6 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Copyright Bar */}
       <div className="border-t border-slate-800">
         <div className="max-w-7xl mx-auto px-4 py-6">
           <p className="text-center text-sm">

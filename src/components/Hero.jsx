@@ -71,7 +71,7 @@ const ReferralModal = ({ isOpen, onClose }) => {
   return (
     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
       <div className="bg-slate-900 rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto border border-slate-800">
-        {/* Modal Header */}
+       
         <div className="p-6 border-b border-slate-800 flex items-center justify-between">
           <div>
             <h3 className="text-xl font-semibold text-white">Refer a Friend</h3>
@@ -87,9 +87,9 @@ const ReferralModal = ({ isOpen, onClose }) => {
           </button>
         </div>
 
-        {/* Form */}
+        
         <form onSubmit={submit} className="p-6 space-y-6">
-          {/* Referrer Details */}
+          
           <div className="space-y-4">
             <h4 className="text-sm font-medium text-slate-300">
               Your Details (Referrer)
@@ -149,7 +149,7 @@ const ReferralModal = ({ isOpen, onClose }) => {
             </div>
           </div>
 
-          {/* Friend's Details */}
+         
           <div className="space-y-4">
             <h4 className="text-sm font-medium text-slate-300">
               Friend's Details (Referee)
@@ -217,7 +217,7 @@ const ReferralModal = ({ isOpen, onClose }) => {
             </div>
           </div>
 
-          {/* Additional Information */}
+          
           <div>
             <label className="block text-sm text-slate-400 mb-2">
               Additional Notes
@@ -232,7 +232,7 @@ const ReferralModal = ({ isOpen, onClose }) => {
             />
           </div>
 
-          {/* Submit Button */}
+          
           <button
             type="submit"
             className="w-full bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-xl font-medium flex items-center justify-center gap-2 transition-all"
@@ -254,19 +254,17 @@ const ReferralModal = ({ isOpen, onClose }) => {
   );
 };
 
-// Modified Hero component with modal functionality and image part added
+
 const Hero = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <section className="font-inter relative bg-[#020617] h-screen">
-      {/* Background grid pattern */}
+      
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
 
-      {/* Content Container */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-8 items-center h-full py-20">
-          {/* Left Column */}
           <div className="space-y-10">
             <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2">
               <span className="text-blue-400 text-sm">
@@ -307,7 +305,6 @@ const Hero = () => {
               </button>
             </div>
 
-            {/* Floating Elements for mobile */}
             <div className="flex items-center gap-4 text-sm text-gray-500">
               <div className="flex -space-x-2">
                 {[...Array(4)].map((_, i) => (
@@ -324,7 +321,6 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right Column - Mobile Preview */}
           <div className="relative hidden lg:block">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl"></div>
             <div className="relative">
@@ -338,7 +334,6 @@ const Hero = () => {
                 </div>
               </div>
 
-              {/* Floating Elements */}
               <div className="absolute top-20 -right-8 p-4 bg-gray-900/90 rounded-xl backdrop-blur border border-gray-800">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
@@ -355,7 +350,6 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Referral Modal */}
       <ReferralModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}

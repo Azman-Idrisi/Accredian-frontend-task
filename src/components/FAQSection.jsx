@@ -23,11 +23,11 @@ const FAQSection = () => {
 
   return (
     <section className="min-h-screen h-full font-inter relative bg-[#020617] flex items-center justify-center py-20">
-      {/* Background grid pattern */}
+     
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
 
       <div className="relative w-full max-w-4xl mx-auto px-4 space-y-16">
-        {/* Header */}
+        
         <div className="text-center space-y-6">
           <div className="inline-flex items-center justify-center gap-2 bg-blue-500/10 text-blue-400 px-4 py-2 rounded-full">
             <Sparkles className="w-4 h-4" />
@@ -43,7 +43,7 @@ const FAQSection = () => {
           </h2>
         </div>
 
-        {/* Navigation Pills */}
+      
         <div className="flex flex-wrap gap-3 justify-center px-4">
           {["Eligibility", "How To Use?", "Terms & Conditions"].map((tab) => (
             <button
@@ -60,7 +60,7 @@ const FAQSection = () => {
           ))}
         </div>
 
-        {/* FAQ Cards */}
+        
         <div className="space-y-6 px-4">
           {faqs.map((faq) => (
             <div
@@ -95,7 +95,7 @@ const FAQSection = () => {
           ))}
         </div>
 
-        {/* CTA Card */}
+       
         <div className="relative overflow-hidden rounded-3xl mx-4">
           <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-90" />
           <div className="relative p-8 flex flex-col md:flex-row items-center justify-between gap-6">

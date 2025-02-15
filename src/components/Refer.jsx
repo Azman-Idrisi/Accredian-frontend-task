@@ -98,10 +98,10 @@ const Refer = () => {
       id="refer-section"
       className="w-full relative font-inter mx-auto px-4 py-20 bg-[#020617]"
     >
-      {/* Background grid pattern */}
+      
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
 
-      {/* Header */}
+      
       <div className="text-center mb-16">
         <h2 className="text-3xl md:text-4xl font-bold text-white">
           How Do I{" "}
@@ -116,9 +116,9 @@ const Refer = () => {
         </h2>
       </div>
 
-      {/* Steps */}
+      
       <div className="relative">
-        {/* Connecting line */}
+        
         <div className="hidden md:block absolute top-24 left-0 right-0 h-0.5 bg-gray-200">
           <div
             className={`h-full bg-blue-500 transform transition-all duration-1500 ease-out ${
@@ -138,14 +138,14 @@ const Refer = () => {
               }`}
               style={{ transitionDelay: `${index * 200}ms` }}
             >
-              {/* Connector Dot */}
+           
               <div className="hidden md:block absolute top-24 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
                 <div className="w-4 h-4 rounded-full bg-white border-2 border-blue-500"></div>
               </div>
 
-              {/* Card */}
+              
               <div className="bg-[#0f172a] rounded-xl shadow-lg hover:shadow-xl p-6 h-full transform transition-all duration-300 hover:-translate-y-2">
-                {/* Icon */}
+                
                 <div className="relative w-16 h-16 mx-auto mb-6 group">
                   <div className="absolute inset-0 rounded-full bg-blue-100 transform transition-all duration-300 group-hover:scale-110"></div>
                   <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -154,7 +154,7 @@ const Refer = () => {
                   </div>
                 </div>
 
-                {/* Content */}
+              
                 <h3 className="text-xl text-[#f8fafc] font-semibold text-center mb-2">
                   {step.title}
                 </h3>
@@ -165,7 +165,7 @@ const Refer = () => {
         </div>
       </div>
 
-      {/* CTA Button */}
+     
       <div className="mt-16 text-center">
         <button
           className={`relative inline-flex items-center px-8 py-3 overflow-hidden rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 text-white font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg group ${

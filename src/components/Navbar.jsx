@@ -40,7 +40,7 @@ const Navbar = () => {
     >
       <div className="max-w-7xl font-inter mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20 items-center">
-          {/* Logo */}
+          
           <div className="flex-shrink-0 flex items-center gap-5">
             <img
               src="assets/images/Logo.png"
@@ -56,11 +56,11 @@ const Navbar = () => {
             </button>
           </div>
 
-          {/* Desktop Navigation */}
+          
           <div className="hidden md:flex items-center space-x-1">
             {navlinks.map((link, index) => (
               <a
-                key={`${link.name}-${index}`} // Unique key using name and index
+                key={`${link.name}-${index}`} 
                 href={link.path}
                 className="text-gray-300 hover:text-white px-4 py-2 rounded-lg text-sm font-medium 
                   transition-all hover:bg-white/5 relative group"
@@ -70,7 +70,6 @@ const Navbar = () => {
               </a>
             ))}
 
-            {/* CTA Button */}
 
             <button
               className="ml-4 bg-[#94A3B833] hover:bg-[#475569] text-white px-5 py-2 rounded-lg 
@@ -87,7 +86,7 @@ const Navbar = () => {
             </button>
           </div>
 
-          {/* Mobile menu button */}
+          
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -104,7 +103,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Navigation */}
+     
       {isOpen && (
         <div className="md:hidden absolute w-full bg-black/80 backdrop-blur-lg border-b border-gray-800">
           <div className="px-4 pt-2 pb-3 space-y-1">
